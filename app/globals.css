@@ -62,8 +62,12 @@
 @utility gradient-vertical {
     background: linear-gradient(180deg, #12141d 0%, #12151f 100%);
 }
-@utility gradient-gray { background: linear-gradient(270deg, #37363a 0%, #353637 100%); }
-@utility gradient-blue { background: linear-gradient(180deg, #232839 0%, #12141d 100%); }
+@utility gradient-gray {
+    background: linear-gradient(270deg, #37363a 0%, #353637 100%);
+}
+@utility gradient-blue {
+    background: linear-gradient(180deg, #232839 0%, #12141d 100%);
+}
 
 @layer base {
     :root {
