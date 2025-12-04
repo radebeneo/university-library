@@ -1,6 +1,70 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Tailwind CSS v4 theming: define design tokens with @theme */
+@theme {
+  /* primary */
+  --color-primary: #E7C9A5;
+  --color-primary-admin: #25388C;
+  /* breakpoints */
+  --breakpoint-xs: 480px;
+  /* fonts */
+  --font-bebas-neue: var(--bebas-neue), sans-serif;
+  --font-ibm-plex-sans: "IBM Plex Sans", sans-serif;
+
+  /* green */
+  --color-green: #027A48;
+  --color-green-100: #ECFDF3;
+  --color-green-400: #4C7B62;
+  --color-green-500: #2CC171;
+  --color-green-800: #027A48;
+
+  /* red */
+  --color-red: #EF3A4B;
+  --color-red-400: #F46F70;
+  --color-red-500: #E27233;
+  --color-red-800: #EF3A4B;
+
+  /* blue */
+  --color-blue-100: #0089F1;
+
+  /* light */
+  --color-light-100: #D6E0FF;
+  --color-light-200: #EED1AC;
+  --color-light-300: #F8F8FF;
+  --color-light-400: #EDF1F1;
+  --color-light-500: #8D8D8D;
+  --color-light-600: #F9FAFB;
+  --color-light-700: #E2E8F0;
+  --color-light-800: #F8FAFC;
+
+  /* dark */
+  --color-dark-100: #16191E;
+  --color-dark-200: #3A354E;
+  --color-dark-300: #232839;
+  --color-dark-400: #1E293B;
+  --color-dark-500: #0F172A;
+  --color-dark-600: #333C5C;
+  --color-dark-700: #464F6F;
+  --color-dark-800: #1E2230;
+
+  /* gray */
+  --color-gray-100: #CBD5E1;
+
+  /* images */
+  --image-pattern: url('/images/pattern.webp');
+}
+
+/* Custom utilities for v4 */
+@utility bg-pattern {
+  background-image: var(--image-pattern);
+}
+@utility gradient-vertical {
+    background: linear-gradient(180deg, #12141d 0%, #12151f 100%);
+}
+@utility gradient-gray { background: linear-gradient(270deg, #37363a 0%, #353637 100%); }
+@utility gradient-blue { background: linear-gradient(180deg, #232839 0%, #12141d 100%); }
+
 @layer base {
     :root {
         --radius: 0.5rem;
@@ -28,11 +92,11 @@
 
 @layer components {
     .form-btn {
-        @apply bg-primary text-dark-100 hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base !important;
+        @apply bg-primary text-dark-100 hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base   ;
     }
 
     .form-input {
-        @apply w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none bg-dark-300 !important;
+        @apply w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none bg-dark-300   ;
     }
 
     /* Book Card */
@@ -117,7 +181,7 @@
     }
 
     .book-overview_btn {
-        @apply mt-4 min-h-14 w-fit bg-primary text-dark-100 hover:bg-primary/90 max-md:w-full !important;
+        @apply mt-4 min-h-14 w-fit bg-primary text-dark-100 hover:bg-primary/90 max-md:w-full   ;
     }
 
     /* File Upload */
@@ -139,12 +203,12 @@
     }
 
     .search-input {
-        @apply w-full border-none font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none !important;
+        @apply w-full border-none font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none   ;
     }
 
     /* Book Receipt */
     .book-receipt_admin-btn {
-        @apply bg-light-300 rounded-md text-primary-admin font-semibold hover:bg-light-300/80 !important;
+        @apply bg-light-300 rounded-md text-primary-admin font-semibold hover:bg-light-300/80   ;
     }
 
     /* Book Ticket */
@@ -190,7 +254,7 @@
     }
 
     .not-found-btn {
-        @apply bg-primary font-bebas-neue min-w-[360px] mt-6 text-dark-100 text-xl hover:bg-primary/90 min-h-12 !important;
+        @apply bg-primary font-bebas-neue min-w-[360px] mt-6 text-dark-100 text-xl hover:bg-primary/90 min-h-12   ;
     }
 
     /* Pagination */
@@ -199,11 +263,11 @@
     }
 
     .pagination-btn_light {
-        @apply bg-light-300 text-dark-300 hover:bg-light-300/70 !important;
+        @apply bg-light-300 text-dark-300 hover:bg-light-300/70   ;
     }
 
     .pagination-btn_dark {
-        @apply bg-dark-300 hover:bg-dark-100 !important;
+        @apply bg-dark-300 hover:bg-dark-100   ;
     }
 
     #pagination p {
@@ -212,30 +276,19 @@
 
     /* Sort */
     .select-trigger {
-        @apply w-40 h-10 px-4 bg-dark-300 text-light-100 border-dark-100 !important;
+        @apply w-40 h-10 px-4 bg-dark-300 text-light-100 border-dark-100   ;
     }
 
     .select-content {
-        @apply bg-dark-300 text-light-100 border-dark-100 !important;
+        @apply bg-dark-300 text-light-100 border-dark-100   ;
     }
 
     .select-item {
-        @apply focus:bg-dark-600 focus:text-light-100 !important;
+        @apply focus:bg-dark-600 focus:text-light-100   ;
     }
 }
 
 @layer utilities {
-    .gradient-vertical {
-        background: linear-gradient(180deg, #12141d 0%, #12151f 100%);
-    }
-
-    .gradient-gray {
-        background: linear-gradient(270deg, #37363a 0%, #353637 100%);
-    }
-
-    .gradient-blue {
-        background: linear-gradient(180deg, #232839 0%, #12141d 100%);
-    }
 
     /* Auth */
     .auth-container {
