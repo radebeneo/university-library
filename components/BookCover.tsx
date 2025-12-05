@@ -1,6 +1,7 @@
 import React from 'react'
 import {cn} from "@/lib/utils";
 import Image from "next/image";
+import BookCoverSvg from "@/components/BookCoverSvg";
 
 type BookCoverVariant = "extraSmall" | "small" | "medium" | "regular" | "wide" ;
 
@@ -23,7 +24,7 @@ const BookCover = ({className, variant = "regular", coverColor = '#012B48', cove
     return (
         <div className={cn('relative transition-all duration-300', variantStyles[variant], className,)}>
 
-            BOOK SIDE SVG
+            <BookCoverSvg coverColor={[coverColor]}/>
 
             <div className="absolute z-10" style={{ left: '12%', width: '87.5%', height: '88%'}}>
                 <Image src={coverImage} alt="Book cover" fill className="rounded-sm object-fill" />
