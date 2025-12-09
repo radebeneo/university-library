@@ -3,8 +3,8 @@ import animate from "tailwindcss-animate";
 
 export default {
     important: true,
-  darkMode: ["class"],
-  content: [
+    darkMode: ["class", ".dark"],
+    content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,8 +12,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        "ibm-plex-sans": ["IBM Plex Sans", "sans-serif"],
-        "bebas-neue": ["var(--bebas-neue)"],
+        // Use Next.js next/font CSS variables
+        "ibm-plex-sans": ["var(--font-ibm-plex-sans)", "sans-serif"],
+        "bebas-neue": ["var(--font-bebas-neue)", "sans-serif"],
       },
       colors: {
         background: "hsl(var(--background))",

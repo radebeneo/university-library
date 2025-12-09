@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+
 /* Tailwind CSS v4 theming: define design tokens with @theme */
 @theme {
   /* primary */
@@ -9,6 +10,7 @@
   /* breakpoints */
   --breakpoint-xs: 480px;
   /* fonts */
+    --bebas-neue: "Bebas Neue";
   --font-bebas-neue: var(--bebas-neue), sans-serif;
   --font-ibm-plex-sans: "IBM Plex Sans", sans-serif;
 
