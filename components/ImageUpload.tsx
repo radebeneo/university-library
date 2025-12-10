@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import { Image, ImageKitProvider, upload } from '@imagekit/next'
 
 const ImageUpload = () => {
     return (
