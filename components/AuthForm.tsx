@@ -47,7 +47,7 @@ const AuthForm = <T extends FieldValues> ({type, schema, defaultValues, onSubmit
                 {isSignIn ? "Welcome back to Library" : "Create your Library account"}
             </h1>
             <p className="text-light-100">
-                {isSignIn ? "Access the vast collection of resources, and stay updated" : "Please complete all fields and upload a valid university ID to gain access to Library."}
+                {isSignIn ? "Access the vast collection of resources, and stay updated" : "Please complete all fields and upload a valid student number to gain access to Library."}
             </p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(handleSubmit )} className="space-y-6 w-full">
@@ -62,7 +62,7 @@ const AuthForm = <T extends FieldValues> ({type, schema, defaultValues, onSubmit
                                         {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                                     </FormLabel>
                                     <FormControl>
-                                        {field.name === 'universityCard' ? (
+                                        {field.name === 'studentCard' ? (
                                             <ImageUpload/>) :
                                             (<Input required type={FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]} {...field} className="form-input bg-dark-300"/>)}
                                     </FormControl>
