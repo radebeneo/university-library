@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { ImageKitProvider,Image,  upload } from '@imagekit/next'
+import { ImageKitProvider, Image as IKImage, upload as Upload  } from '@imagekit/next'
 import config from "@/lib/config";
 import {useRef, useState} from "react";
 import Image from "next/image";
@@ -35,14 +35,14 @@ const ImageUpload = () => {
 
     return(
         <ImageKitProvider publicKey={publicKey} urlEndpoint={urlEndpoint} authenticator={authenticator}>
-            <upload className="hidden" ref={ikUploadRef} onError={onError} onSuccess={onSuccess} fileName="test-upload.png"/>
+            {/*<Upload className="hidden" ref={ikUploadRef} onError={onError} onSuccess={onSuccess} fileName="test-upload.png"/>*/}
             <button className="upload-btn">
                 <Image src="/icons/upload.svg" alt="upload-icon" width={20} height={20} className="object-contain"/>
                 <p className="text-base text-light-100">Upload Student Card</p>
                 {file && <p className="upload-filename">{file.filePath}</p>}
             </button>
             {file && (
-                <Image alt={file.filePath} path={file.filePath} width={500} height={500}/>
+                <IKImage alt={file.filePath} path={file.filePath} width={500} height={500}/>
             )}
 
         </ImageKitProvider>
