@@ -32,6 +32,8 @@ const RootLayout = ({children,}: { children: ReactNode; }) => {
         className={`${imbPlexSans.className} ${imbPlexSans.variable} ${bebasNeue.variable} antialiased`}
       >
         {children}
+
+
       </body>
     </html>
   );
