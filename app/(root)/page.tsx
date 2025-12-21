@@ -3,10 +3,13 @@ import {Button} from "@/components/ui/button";
 import BookOverview from "@/components/BookOverview";
 import BookList from "@/components/BookList";
 import {sampleBooks} from "@/constants";
+import {db} from "@/database/drizzle";
+import {users} from "@/database/schema";
 
 
 
-const Home = () => {
+const Home =  () => {
+
   return (
     <>
         <BookOverview {...sampleBooks[0]}/>
