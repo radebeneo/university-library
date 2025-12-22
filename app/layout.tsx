@@ -25,6 +25,8 @@ export const metadata: Metadata = {
   description: "Library is a digital library management system",
 };
 
+import {Toaster} from "@/components/ui/toaster";
+
 const RootLayout = ({children,}: { children: ReactNode; }) => {
   return (
     <html lang="en">
@@ -32,8 +34,7 @@ const RootLayout = ({children,}: { children: ReactNode; }) => {
         className={`${imbPlexSans.className} ${imbPlexSans.variable} ${bebasNeue.variable} antialiased`}
       >
         {children}
-
-
+        <Toaster />
       </body>
     </html>
   );

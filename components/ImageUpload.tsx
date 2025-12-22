@@ -4,6 +4,7 @@ import {upload, ImageKitAbortError, ImageKitInvalidRequestError, ImageKitServerE
 import config from "@/lib/config";
 import {useCallback, useRef, useState} from "react";
 import Image from "next/image";
+import {useToast} from "@/hooks/use-toast";
 
 const { env: {imagekit: {publicKey, urlEndpoint}}} = config;
 // Ensure urlEndpoint has no trailing slash to avoid accidental double slashes
@@ -32,6 +33,7 @@ type ImageUploadProps = {
 
 const ImageUpload = ({ onFileChange }: ImageUploadProps) => {
 
+    const {toast} = useToast()
     const fileInputRef = useRef<HTMLInputElement>(null);
     const abortController = new AbortController();
 
@@ -91,24 +93,39 @@ const ImageUpload = ({ onFileChange }: ImageUploadProps) => {
 
             setFile({ filePath: normalizedPath, url: fullUrl, previewSrc });
             // Notify parent about the new file path for form state binding (only when non-empty)
-            if (normalizedPath) onFileChange?.(normalizedPath);
+            if (normalizedPath) {
+                onFileChange?.(normalizedPath);
+                toast({
+                    title: "Image uploaded",
+                    description: `${normalizedPath} uploaded successfully!`,
+                });
+            }
         } catch (error) {
+            let message = "";
+
             if (error instanceof ImageKitAbortError) {
                 console.error("Upload aborted");
-                setErrorMsg("Upload aborted");
+                message = "Upload aborted";
             } else if (error instanceof ImageKitInvalidRequestError) {
                 console.error("Invalid request:", error.message);
-                setErrorMsg(`Invalid request: ${error.message}`);
+                message = `Invalid request: ${error.message}`;
             } else if (error instanceof ImageKitUploadNetworkError) {
                 console.error("Network error:", error.message);
-                setErrorMsg("Network error. Please check your connection and try again.");
+                message = "Network error. Please check your connection and try again.";
             } else if (error instanceof ImageKitServerError) {
                 console.error("Server error:", error.message);
-                setErrorMsg("Server error. Please try again later.");
+                message = "Server error. Please try again later.";
             } else {
                 console.error("Unknown upload error:", error);
-                setErrorMsg("Unexpected error during upload.");
+                message = "Unexpected error during upload.";
             }
+
+            setErrorMsg(message);
+            toast({
+                title: "Image upload failed",
+                description: message,
+                variant: "destructive",
+            });
         } finally {
             setUploading(false);
         }
