@@ -26,18 +26,24 @@ export const metadata: Metadata = {
 };
 
 import {Toaster} from "@/components/ui/toaster";
+import {SessionProvider} from "next-auth/react";
+import {auth} from "@/auth";
 
-const RootLayout = ({children,}: { children: ReactNode; }) => {
-  return (
-    <html lang="en">
-      <body
-        className={`${imbPlexSans.className} ${imbPlexSans.variable} ${bebasNeue.variable} antialiased`}
-      >
-        {children}
-        <Toaster />
-      </body>
-    </html>
-  );
-}
+const RootLayout = async ({children,}: { children: ReactNode; }) => {
+
+    const session = await auth()
+    return (
+        <html lang="en">
+        <SessionProvider session={session}>
+            <body
+                className={`${imbPlexSans.className} ${imbPlexSans.variable} ${bebasNeue.variable} antialiased`}
+            >
+            {children}
+            <Toaster/>
+            </body>
+        </SessionProvider>
+        </html>
+    );
+};
 
 export default RootLayout;
