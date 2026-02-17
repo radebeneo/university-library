@@ -14,7 +14,7 @@ const Page = () => {
             <Button>Sign out</Button>
         </form>
 
-        <BookList title="Borrwed Books" books={sampleBooks} />
+
     </>
 }
 export default Page
