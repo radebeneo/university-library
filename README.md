@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 University Library Management System
 
-## Getting Started
+A modern, full-stack library management application designed for universities. This platform allows students to browse, borrow, and manage books while providing administrators with tools to oversee library operations.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Authentication & Authorization**: Secure login and registration for students and admins using NextAuth.js.
+- **Book Management**: Browse a comprehensive list of books with detailed overviews, including descriptions, authors, and availability.
+- **Borrowing System**: Track borrowed and returned books (Work in Progress).
+- **User Profiles**: Personalized profiles for students to view their activity and borrowed items.
+- **Image Uploads**: Integrated with ImageKit for efficient management of book covers and student ID cards.
+- **Responsive Design**: Fully responsive UI built with Tailwind CSS and Shadcn UI.
+- **Role-Based Access**: Specialized views and permissions for Students and Administrators.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Database**: [PostgreSQL](https://www.postgresql.org/) (via [Neon](https://neon.tech/))
+- **ORM**: [Drizzle ORM](https://orm.drizzle.team/)
+- **Authentication**: [NextAuth.js v5 (Beta)](https://authjs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [Shadcn UI](https://ui.shadcn.com/)
+- **Image Hosting**: [ImageKit](https://imagekit.io/)
+- **Form Handling**: React Hook Form, Zod
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📋 Prerequisites
 
-## Learn More
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [npm](https://www.npmjs.com/) or [pnpm](https://pnpm.io/)
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/university-library.git
+   cd university-library
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Set up environment variables**:
+   Create a `.env.local` file in the root directory and add the following:
+   ```env
+   # Database
+   DATABASE_URL=your_postgresql_url
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   # NextAuth
+   NEXTAUTH_SECRET=your_nextauth_secret
+   NEXT_PUBLIC_API_ENDPOINT=http://localhost:3000
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   # ImageKit
+   NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY=your_imagekit_public_key
+   IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
+   NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT=your_imagekit_url_endpoint
+   ```
+
+4. **Initialize the database**:
+   ```bash
+   npm run db:generate
+   npm run db:migrate
+   ```
+
+5. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to see the result.
+
+## 🗄️ Database Schema
+
+The project uses Drizzle ORM to manage the schema. Key tables include:
+- `users`: Stores user information, roles (ADMIN/USER), and account status.
+- `books`: (Coming Soon) Manages book details and availability.
+
+## 📜 Scripts
+
+- `npm run dev`: Starts the development server.
+- `npm run build`: Builds the application for production.
+- `npm run db:generate`: Generates database migrations.
+- `npm run db:migrate`: Applies database migrations.
+- `npm run db:studio`: Opens Drizzle Studio to explore your database.
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
