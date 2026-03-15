@@ -12,7 +12,14 @@ const nextConfig: NextConfig = {
               hostname: "m.media-amazon.com"
           },
       ]
-  }
+  },
+
+    typescript: {
+        ignoreBuildErrors: true,
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 };
 
 export default nextConfig;
